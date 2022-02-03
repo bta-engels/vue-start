@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Test from "../components/Test";
 import Default from "../components/Default";
 import TodosPage from "../views/TodosPage";
 import LoginPage from "../views/LoginPage";
