@@ -3,7 +3,7 @@
         <TodosListItemAdd :add-todo="addTodos"/>
         <div class="row">
             <div class="col">
-                <ul v-if="todos.length > 0">
+                <ul v-if="todos && todos.length > 0">
                     <TodosListItem
                         v-for="item in todos"
                         :key="item.id"
@@ -54,7 +54,6 @@ export default {
                 .catch(err => console.error(err.message))
         },
         remove(obj) {
-
             if (!confirm("Todo: \"" + obj.text + "\" wirklich löschen")) {
                 return false;
             }
@@ -100,7 +99,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -14,11 +14,11 @@ if(userToken) {
 }
 
 let config = {
-	baseURL: process.env.VUE_APP_APIURL || process.env.apiUrl || ""
+	baseURL: process.env.VUE_APP_APIURL || "",
 	// timeout: 60 * 1000, // Timeout
 	// withCredentials: true, // Check cross-site Access-Control
 };
-
+console.info(config.baseURL);
 const _axios = axios.create(config);
 
 _axios.interceptors.request.use(

@@ -1,8 +1,6 @@
 <template>
     <div>
-        <h3>
-            {{ msg }}
-        </h3>
+        <h3>{{ msg }}</h3>
     </div>
 </template>
 
@@ -17,7 +15,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-
-</style>
