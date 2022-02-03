@@ -1,12 +1,10 @@
 <template>
-    <TodosList />
+    <div></div>
 </template>
 
 <script>
-import TodosList from "../components/TodosList";
 export default {
     name: "TodosPage",
-    components: {TodosList}
 }
 </script>
 
