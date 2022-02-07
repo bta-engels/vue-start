@@ -7,6 +7,7 @@ import LoginPage from "../views/LoginPage";
 
 Vue.use(VueRouter)
 
+
 const routes = [
 	{
 		path: '/',
