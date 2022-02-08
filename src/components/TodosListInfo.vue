@@ -1,37 +1,35 @@
 <template>
-    <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Text</th>
-            <th>Done/Not done</th>
-            <th>Created at</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{todo.id}}</td>
-            <td>{{todo.text}}</td>
-            <td>{{todo.done}}</td>
-            <td>{{todo.created_at}}</td>
-          </tr>
-        </tbody>
-    </table>
-
+    <div>
+        <table v-if="data" class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <td>{{ data.id }}</td>
+            </tr>
+            <tr>
+                <th>Erledigt</th>
+                <td>{{ data.done ? 'JA' : 'Nein' }}</td>
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ data.text }}</td>
+            </tr>
+            <tr>
+                <th>erstellt</th>
+                <td>{{ data.created_at }}</td>
+            </tr>
+        </table>
+    </div>
 </template>
 
 <script>
 export default {
-
     name: "TodosListInfo",
-    props: ['todo'],
-
+    props: ['data'],
 }
-
 </script>
 
 <style scoped>
-td,th {
-  border: 1px solid #000;
+th,td {
+    text-align: left;
 }
 </style>
