@@ -7,12 +7,12 @@
         </div>
         <div class="row">
             <div class="col">
-                <TodosListItem :data="todos" />
+                <TodosListItem :data="todos" @on-todo-click="info" />
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <TodosListInfo />
+                <TodosListInfo :todo="todo" v-if="todo!=null"/>
             </div>
         </div>
     </div>
@@ -29,6 +29,7 @@ export default {
     data() {
         return {
             todos: [],
+            todo: null,
         }
     },
     created() {
@@ -43,6 +44,10 @@ export default {
                 .catch(err => {
                     console.error(err)
                 });
+        },
+        info(obj) {
+          console.log(obj)
+          this.todo=obj
         }
     }
 }
