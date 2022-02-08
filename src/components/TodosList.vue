@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <TodosListItem :data="todos" />
+                <TodosListItem :data="todos" @on-todo-click="info" />
             </div>
         </div>
         <div class="row">
@@ -43,6 +43,9 @@ export default {
                 .catch(err => {
                     console.error(err)
                 });
+        },
+        info(obj) {
+            console.info(obj)
         }
     }
 }

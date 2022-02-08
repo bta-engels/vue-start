@@ -1,7 +1,7 @@
 <template>
-    <ul v-if="data.length > 0">
+    <ul v-if="data && data.length > 0">
         <li v-for="item in data" :key="item.id">
-            {{ item.text }}
+            <span @click="$emit('on-todo-click', item)">{{ item.text }}</span>
         </li>
     </ul>
     <h3 v-else>Bitte warten</h3>
@@ -19,8 +19,11 @@ ul {
     width: 50%;
     margin: auto;
     list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
 }
 ul li {
     text-align: left;
+    cursor: pointer;
 }
 </style>
