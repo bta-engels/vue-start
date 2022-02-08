@@ -1,12 +1,25 @@
 <template>
-    <div>
+    <table>
+      <tr>
+        <th>Id</th>
+        <td>{{ todo.id }}</td>
+      </tr>
+      <tr>
+        <th>Done</th>
+        <td>{{ todo.done }}</td>
+      </tr>
+      <tr>
+        <th>Text</th>
+        <td>{{ todo.text }}</td>
+      </tr>
 
-    </div>
+    </table>
 </template>
 
 <script>
 export default {
-    name: "TodosListInfo"
+    name: "TodosListInfo",
+    props: ['data']
 }
 </script>
 

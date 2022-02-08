@@ -29,6 +29,7 @@ export default {
     data() {
         return {
             todos: [],
+            todo: null,
         }
     },
     created() {
@@ -46,6 +47,7 @@ export default {
         },
         info(obj) {
             console.info(obj)
+          this.todo = obj
         }
     }
 }
