@@ -18,7 +18,6 @@ let config = {
 	// timeout: 60 * 1000, // Timeout
 	// withCredentials: true, // Check cross-site Access-Control
 };
-console.info(config.baseURL);
 const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
