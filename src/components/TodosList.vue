@@ -7,25 +7,26 @@
         </div>
         <div class="row">
             <div class="col">
-                <TodosListItem :data="todos" />
+                <TodosListItem :data="todos" @on-todo-click="info" />
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <TodosListInfo  />
+                <TodosListInfo />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+/* global axios */
 import TodosListAdd from "@/components/TodosListAdd";
 import TodosListItem from "@/components/TodosListItem";
 import TodosListInfo from "@/components/TodosListInfo";
 export default {
     name: "TodosList",
-  components: {TodosListInfo, TodosListItem, TodosListAdd},
-  data() {
+    components: {TodosListInfo, TodosListItem, TodosListAdd},
+    data() {
         return {
             todos: [],
         }
@@ -42,6 +43,9 @@ export default {
                 .catch(err => {
                     console.error(err)
                 });
+        },
+        info(obj) {
+            console.info(obj)
         }
     }
 }

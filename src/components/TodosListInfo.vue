@@ -1,13 +1,14 @@
 <template>
+    <div>
 
+    </div>
 </template>
 
 <script>
 export default {
-  name: "TodosListInfo"
+    name: "TodosListInfo"
 }
 </script>
 
 <style scoped>
-
 </style>
