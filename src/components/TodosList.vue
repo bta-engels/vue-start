@@ -2,26 +2,30 @@
     <div>
         <div class="row">
             <div class="col">
-                <h3>Add Todo</h3>
+                <TodosListAdd />
+            </div>
+        </div>
+        <div class="row" v-cloak>
+            <div class="col">
+                <TodosListItem :data="todos"/>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h3>Todo Liste</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h3>Todo Detail</h3>
+                <TodosListInfo />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import TodosListAdd from "@/components/TodosListAdd";
+import TodosListItem from "@/components/TodosListItem";
+import TodosListInfo from "@/components/TodosListInfo";
 export default {
     name: "TodosList",
-    data() {
+  components: {TodosListInfo, TodosListItem, TodosListAdd},
+  data() {
         return {
             todos: [],
         }
@@ -44,5 +48,8 @@ export default {
 </script>
 
 <style scoped>
+[v-cloak] {
+  display: none;
+}
 
 </style>
