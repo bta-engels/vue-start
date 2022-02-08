@@ -2,25 +2,30 @@
     <div>
         <div class="row">
             <div class="col">
-                <h3>Add Todo</h3>
+                <TodosListAdd />
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h3>Todo Liste</h3>
+                <TodosListItem :data="todos" />
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h3>Todo Detail</h3>
+                <TodosListInfo />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+/* global axios */
+import TodosListAdd from "@/components/TodosListAdd";
+import TodosListItem from "@/components/TodosListItem";
+import TodosListInfo from "@/components/TodosListInfo";
 export default {
     name: "TodosList",
+    components: {TodosListInfo, TodosListItem, TodosListAdd},
     data() {
         return {
             todos: [],
