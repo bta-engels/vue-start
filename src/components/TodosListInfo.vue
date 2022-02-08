@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>erstellt</th>
-                <td>{{ data.created_at }}</td>
+                <td>{{ createdAt }} Uhr</td>
             </tr>
         </table>
     </div>
@@ -25,6 +25,19 @@
 export default {
     name: "TodosListInfo",
     props: ['data'],
+    computed: {
+        createdAt() {
+            let date = new Date(this.data.created_at),
+                day = date.toLocaleDateString(),
+                hours = date.getHours(),
+                minutes = date.getMinutes();
+
+            minutes = minutes < 10  ?"0" + minutes : minutes;
+            hours = hours < 10  ?"0" + hours : hours;
+
+            return day + " " + hours + ":" + minutes;
+        }
+    }
 }
 </script>
 
