@@ -7,7 +7,10 @@
         </div>
         <div class="row">
             <div class="col">
-                <TodosListItem :data="todos" @on-todo-click="info" />
+                <TodosListItem
+                    :data="todos"
+                    @on-todo-click="info"
+                />
             </div>
         </div>
         <div class="row">
@@ -47,7 +50,7 @@ export default {
         },
         info(obj) {
             this.todo = obj
-        }
+        },
     }
 }
 </script>
