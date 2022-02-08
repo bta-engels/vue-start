@@ -1,6 +1,6 @@
 <template>
-    <div class="container align-content-center" @submit.prevent="login">
-        <b-form class="align-self-center m-5">
+    <div class="container align-content-center">
+        <b-form class="align-self-center m-5" @submit.prevent="login">
             <b-form-group>
                 <label for="email">Email: </label>
                 <b-input id="email" required type="email" v-model="user.email"/>
