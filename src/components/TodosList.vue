@@ -12,7 +12,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <TodosListInfo />
+                <TodosListInfo v-if="todo"  :data="todo" />
             </div>
         </div>
     </div>
@@ -46,8 +46,7 @@ export default {
                 });
         },
         info(obj) {
-            console.info(obj)
-          this.todo = obj
+            this.todo = obj
         }
     }
 }
