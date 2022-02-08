@@ -6,7 +6,7 @@
 import TodosList from "@/components/TodosList";
 export default {
     name: "TodosPage",
-  components: {TodosList},
+    components: {TodosList},
 }
 </script>
 
