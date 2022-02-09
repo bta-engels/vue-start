@@ -62,8 +62,13 @@ export default {
                     this.todos = this.todos.filter( item => item === updatedTodo ? updatedTodo : item)
                 })
                 .catch(err => {
-                    console.error(err)
-                    this.errors = err
+					if(err.response.status == 422) {
+						let msg = (undefined )
+						alert(err.response.status)
+					}
+
+
+
                 });
         },
         store(txt){
