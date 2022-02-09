@@ -24,6 +24,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 /* global axios */
 import TodosListAdd from "@/components/TodosListAdd";
 import TodosListItem from "@/components/TodosListItem";
@@ -55,8 +56,15 @@ export default {
             this.todo = obj
         },
         update(obj){
-			console.info(obj)
-
+            axios.put("/api/todos/" + obj.id, obj)
+                .then(resp => {
+                    let updatedTodo = resp.data.data;
+                    this.todos = this.todos.filter( item => item === updatedTodo ? updatedTodo : item)
+                })
+                .catch(err => {
+                    console.error(err)
+                    this.errors = err
+                });
         },
         store(txt){
            let newTodo = {
@@ -69,7 +77,6 @@ export default {
                })
                .catch(err => {
                     console.error(err)
-                    this.errors = err
                });
         },
         deleteTodo(obj){
