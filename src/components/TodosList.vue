@@ -65,7 +65,7 @@ export default {
                         let msg = (undefined !== err.response.data.errors.text)
                             ? err.response.data.errors.text[0]
                             : 'Fehlerhafte Eingabe';
-                        alert(msg)
+                        alert(msg);
                     }
                 });
         },
