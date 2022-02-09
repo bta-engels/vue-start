@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 ul {
-    width: 50%;
+    width: 100%;
     margin: auto;
     list-style: none;
     max-height: 200px;
