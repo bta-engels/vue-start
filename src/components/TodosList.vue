@@ -71,16 +71,16 @@ export default {
                });
         },
         deleteTodo(obj){
-			var id = obj.id
-			axios.delete("/api/todos/"+id)
-				.then(resp => {
-
-				})
-				.catch(err => {
-					console.error(err)
-					this.errors = err
-				});
-
+            if(confirm("Todo wirklich löschen?")) {
+                axios.delete("/api/todos/" + obj.id)
+                    .then(resp => {
+                        this.todos = this.todos.filter( item => item !== obj )
+                    })
+                    .catch(err => {
+                        console.error(err)
+                        this.errors = err
+                    });
+            }
         }
     }
 }
