@@ -57,13 +57,13 @@ export default {
              'text':txt,
              'done':0,
            };
-           axios.post("/api/todos",newTodo)
+           axios.post("/api/todos", newTodo)
                .then(resp => {
-                 this.todos.unshift(resp.data.data)
+                    this.todos.unshift(resp.data.data)
                })
                .catch(err => {
-                 console.error(err)
-                 this.errors = err
+                    console.error(err)
+                    this.errors = err
                });
         },
         delete(obj){
