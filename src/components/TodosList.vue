@@ -17,7 +17,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <TodosListInfo v-if="todo"  :data="todo" />
+                <TodosListInfo v-if="todo" :data="todo" />
             </div>
         </div>
     </div>
@@ -35,7 +35,6 @@ export default {
     data() {
         return {
             todos: [],
-            errors:null,
             todo: null,
         }
     },
@@ -62,8 +61,12 @@ export default {
                     this.todos = this.todos.filter( item => item === updatedTodo ? updatedTodo : item)
                 })
                 .catch(err => {
-                    console.error(err)
-                    this.errors = err
+                    if(err.response.status == 422) {
+                        let msg = (undefined !== err.response.data.errors.text)
+                            ? err.response.data.errors.text[0]
+                            : 'Fehlerhafte Eingabe';
+                        alert(msg)
+                    }
                 });
         },
         store(txt){
@@ -76,7 +79,7 @@ export default {
                     this.todos.unshift(resp.data.data)
                })
                .catch(err => {
-                    console.error(err)
+                    console.info(err.response)
                });
         },
         deleteTodo(obj){
@@ -95,7 +98,6 @@ export default {
                     })
                     .catch(err => {
                         console.error(err)
-                        this.errors = err
                     });
             }
         }
