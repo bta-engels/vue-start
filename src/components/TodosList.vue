@@ -51,6 +51,15 @@ export default {
         info(obj) {
             this.todo = obj
         },
+        update(obj) {
+
+        },
+        store(txt) {
+
+        },
+        delete(obj) {
+
+        }
     }
 }
 </script>
