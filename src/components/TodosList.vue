@@ -2,7 +2,7 @@
     <div>
         <div class="row">
             <div class="col">
-                <TodosListAdd />
+                <TodosListAdd @on-click-add="store"/>
             </div>
         </div>
         <div class="row">
@@ -51,6 +51,28 @@ export default {
         info(obj) {
             this.todo = obj
         },
+        update(obj) {
+
+        },
+        store(txt) {
+          let newTodo= {
+            'text':txt,
+            'done':0,
+          };
+          axios.post("/api/todos,newTodo")
+              .then(resp => {
+                this.todos.unshift(resp.data.data)
+              })
+              .catch(err => {
+                console.error(err)
+                this.errors = err
+              });
+
+
+        },
+        delete(obj) {
+
+        }
     }
 }
 </script>
