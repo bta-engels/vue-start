@@ -61,26 +61,26 @@ export default {
              'text':txt,
              'done':0,
            };
-           axios.post("/api/todos",newTodo)
+           axios.post("/api/todos", newTodo)
                .then(resp => {
-                 this.todos.unshift(resp.data.data)
+                    this.todos.unshift(resp.data.data)
                })
                .catch(err => {
-                 console.error(err)
-                 this.errors = err
+                    console.error(err)
+                    this.errors = err
                });
         },
         deleteTodo(obj){
-			var id = obj.id
-			axios.delete("/api/todos/"+id)
-				.then(resp => {
-					this.todos.delete(resp.data.data)
-				})
-				.catch(err => {
-					console.error(err)
-					this.errors = err
-				});
-
+            if(confirm("Todo wirklich löschen?")) {
+                axios.delete("/api/todos/" + obj.id)
+                    .then(resp => {
+                        this.todos = this.todos.filter( item => item !== obj )
+                    })
+                    .catch(err => {
+                        console.error(err)
+                        this.errors = err
+                    });
+            }
         }
     }
 }

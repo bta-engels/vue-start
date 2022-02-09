@@ -32,8 +32,8 @@ export default {
                 hours = date.getHours(),
                 minutes = date.getMinutes();
 
-            minutes = minutes < 10  ?"0" + minutes : minutes;
-            hours = hours < 10  ?"0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            hours = hours < 10 ? "0" + hours : hours;
 
             return day + " " + hours + ":" + minutes;
         }
