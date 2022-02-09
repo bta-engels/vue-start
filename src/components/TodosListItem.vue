@@ -26,4 +26,7 @@ ul li {
     text-align: left;
     cursor: pointer;
 }
+ul li span {
+    margin-left: 5px;
+}
 </style>
