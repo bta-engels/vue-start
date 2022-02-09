@@ -55,7 +55,16 @@ export default {
             this.todo = obj
         },
         update(obj){
-			console.info(obj)
+			//console.info(obj)
+			axios.put("/api/todos/" + obj.id, obj)
+				.then(resp => {
+					this.todos.update(resp.data.data)
+
+				})
+				.catch(err => {
+					console.error(err)
+					this.errors = err
+				});
 
         },
         store(txt){
@@ -76,7 +85,8 @@ export default {
             if(confirm("Todo wirklich löschen?")) {
                 axios.delete("/api/todos/" + obj.id)
                     .then(resp => {
-                        this.todos = this.todos.filter( item => item !== obj )
+						let updatedTodo = resp.data.data
+
 
 						/* classic syntax
 						this.todos = this.todos.filter(function(item){
