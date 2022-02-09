@@ -69,7 +69,7 @@ export default {
                     }
                 });
         },
-        store(txt){
+        store(txt) {
            let newTodo = {
              'text':txt,
              'done':0,
@@ -79,7 +79,12 @@ export default {
                     this.todos.unshift(resp.data.data)
                })
                .catch(err => {
-                    console.info(err.response)
+                   if(err.response.status == 422) {
+                       let msg = (undefined !== err.response.data.errors.text)
+                           ? err.response.data.errors.text[0]
+                           : 'Fehlerhafte Eingabe';
+                       alert(msg);
+                   }
                });
         },
         deleteTodo(obj){
