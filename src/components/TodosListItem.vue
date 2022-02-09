@@ -1,7 +1,9 @@
 <template>
     <ul v-if="data && data.length > 0">
         <li v-for="item in data" :key="item.id">
+
             <span @click="$emit('on-todo-click', item)">{{ item.text }}</span>
+
         </li>
     </ul>
     <h3 v-else>Bitte warten</h3>
