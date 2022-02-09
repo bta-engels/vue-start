@@ -55,7 +55,14 @@ export default {
             this.todo = obj
         },
         update(obj){
-			console.info(obj)
+			axios.put("/api/todos" + obj.id, obj)
+				.then(resp => {
+						this.todos.unshift(resp.data.data)
+					})
+					.catch(err => {
+						console.error(err)
+						this.errors = err
+					});
 
         },
         store(txt){
