@@ -74,7 +74,7 @@ export default {
 			var id = obj.id
 			axios.delete("/api/todos/"+id)
 				.then(resp => {
-
+					this.todos.delete(resp.data.data)
 				})
 				.catch(err => {
 					console.error(err)
