@@ -69,7 +69,7 @@ export default {
                     }
                 });
         },
-        store(txt){
+        store(txt) {
            let newTodo = {
              'text':txt,
              'done':0,
