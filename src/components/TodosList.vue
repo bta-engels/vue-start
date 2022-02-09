@@ -75,6 +75,14 @@ export default {
                 axios.delete("/api/todos/" + obj.id)
                     .then(resp => {
                         this.todos = this.todos.filter( item => item !== obj )
+
+						/* classic syntax
+						this.todos = this.todos.filter(function(item){
+							if (item !== obj){
+								return item
+							}
+						})
+						*/
                     })
                     .catch(err => {
                         console.error(err)
