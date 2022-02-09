@@ -36,5 +36,7 @@ ul li {
 	flex-direction: row;
 	justify-content: space-between;
 }
-
+.done {
+    text-decoration: line-through;
+}
 </style>
