@@ -1,7 +1,7 @@
 <template>
     <ul v-if="data && data.length > 0">
         <li v-for="item in data" :key="item.id">
-            <span @click="$emit('on-todo-click', item)">{{ item.text }}</span>
+            <span :class="{'done': item.done}" @click="$emit('on-todo-click', item)">{{ item.text }}</span>
 
 			<b-button  @click="$emit('on-click-delete', item)" class="btn-sm btn-danger float-right del">
 				<font-awesome-icon icon="trash-alt"/>
