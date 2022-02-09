@@ -35,7 +35,7 @@ export default {
     data() {
         return {
             todos: [],
-            errors:null,
+            errrors:null,
             todo: null,
         }
     },
@@ -76,7 +76,9 @@ export default {
                     this.todos.unshift(resp.data.data)
                })
                .catch(err => {
-                    console.error(err)
+                    console.info(err.response.status)
+				    console.log(err.response.data.errors)
+				    alert(err.response.data.errors.text)
                });
         },
         deleteTodo(obj){
