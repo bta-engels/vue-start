@@ -11,6 +11,7 @@
 					:data="todos"
 					@on-todo-click="info"
 					@on-click-delete="deleteTodo"
+					@on-todo-change="update"
 				/>
             </div>
         </div>
@@ -54,6 +55,7 @@ export default {
             this.todo = obj
         },
         update(obj){
+			console.info(obj)
 
         },
         store(txt){

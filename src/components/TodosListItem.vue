@@ -1,7 +1,18 @@
+
 <template>
     <ul v-if="data && data.length > 0">
         <li v-for="item in data" :key="item.id">
-            <span :class="{'done': item.done}" @click="$emit('on-todo-click', item)">{{ item.text }}</span>
+			<input type="checkbox"
+				v-model="item.done"
+				@change="$emit('on-todo-change', item)"
+			/>
+
+            <input type="text"
+				:class="{'done': item.done}"
+				@click="$emit('on-todo-click', item)"
+				@change="$emit('on-todo-change', item)"
+				v-model="item.text"
+			/>
 
 			<b-button  @click="$emit('on-click-delete', item)" class="btn-sm btn-danger float-right del">
 				<font-awesome-icon icon="trash-alt"/>
@@ -12,10 +23,12 @@
 </template>
 
 <script>
+/* eslint-disable */
 export default {
     name: "TodosListItem",
     props: ['data']
 }
+
 </script>
 
 <style scoped>
@@ -38,5 +51,13 @@ ul li {
 }
 .done {
     text-decoration: line-through;
+}
+[type=text]{
+	width: 80%;
+	margin-left:10px;
+	border: none;
+}
+[type=text]:focus{
+	outline: none;
 }
 </style>
