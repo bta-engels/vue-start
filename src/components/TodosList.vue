@@ -7,7 +7,11 @@
         </div>
         <div class="row">
             <div class="col">
-                <TodosListItem :data="todos" @on-todo-click="info" />
+                <TodosListItem
+					:data="todos"
+					@on-todo-click="info"
+					@on-click-delete="deleteTodo"
+				/>
             </div>
         </div>
         <div class="row">
@@ -66,7 +70,16 @@ export default {
                     this.errors = err
                });
         },
-        delete(obj){
+        deleteTodo(obj){
+			var id = obj.id
+			axios.delete("/api/todos/"+id)
+				.then(resp => {
+
+				})
+				.catch(err => {
+					console.error(err)
+					this.errors = err
+				});
 
         }
     }
