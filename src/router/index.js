@@ -4,9 +4,9 @@ import Home from '../views/Home.vue'
 import Default from "../components/Default";
 import TodosPage from "../views/TodosPage";
 import LoginPage from "../views/LoginPage";
+import store from "@/store";
 
 Vue.use(VueRouter)
-
 
 const routes = [
 	{
@@ -23,6 +23,13 @@ const routes = [
 		path: '/login',
 		name: 'Login',
 		component: LoginPage
+	},
+	{
+		path: '/logout',
+		name: 'Logout',
+		component: function () {
+			store.dispatch("auth/logout")
+		}
 	},
 	{
 		path: '/*',
