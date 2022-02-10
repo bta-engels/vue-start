@@ -83,12 +83,9 @@ export default {
                     this.todos.unshift(resp.data.data)
                })
                .catch(err => {
-                    //console.info(err.response.status)
-				    //console.log(err.response.data.errors)
-				    //alert(err.response.data.errors.text)
+                    console.info(err.response.status)
+				    console.log(err.response.data.errors)
 				    this.errors = err.response.data.errors
-
-				   //this.errrors = this.errrors.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')
                });
         },
         deleteTodo(obj){
