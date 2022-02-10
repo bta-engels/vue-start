@@ -1,6 +1,6 @@
 
 <template>
-    <ul v-if="data && data.length > 0">
+    <ul v-if="data">
         <li v-for="item in data" :key="item.id">
                 <input type="checkbox"
                        v-model="item.done"
@@ -25,7 +25,11 @@
 /* eslint-disable */
 export default {
     name: "TodosListItem",
-    props: ['data']
+    computed: {
+        data() {
+            return this.$store.state.todos.liste
+        }
+    }
 }
 </script>
 
@@ -42,7 +46,6 @@ ul li {
     text-align: left;
     cursor: pointer;
 	width: 100%;
-	border: 1px solid #000;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;

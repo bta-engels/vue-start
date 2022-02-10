@@ -8,18 +8,23 @@ const todos = {
 	namespaced: true,
 	state: {
 		liste: [],
-		todo:null,
-		error: null
+		countDone: 0,
+		countOpen: 0,
+		todo: null,
+		error: null,
 	},
 	getters: {
-		liste: state=>state.liste,
-		todo: state=>state.todo,
-		error: state=>state.error
+		liste: state => state.liste,
+		todo: state => state.todo,
+		error: state => state.error,
 	},
 	mutations: {
-		mTodos:function (state, todos) {
-			state.liste = todos
+		mTodos: function (state, todos) {
 			state.error = null
+			state.liste = todos
+		},
+		mError: function (state, err) {
+			state.error = err
 		},
 	},
 	actions: {
@@ -30,9 +35,8 @@ const todos = {
 				})
 				.catch(err => {
 					context.commit('mError', err.response.data.message)
-				})
-
-		},
+				});
+		}
 	},
 };
 export default todos;

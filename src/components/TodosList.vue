@@ -1,21 +1,17 @@
 <template>
     <div>
-		<div class="row alert-danger error" v-if="errors">
-			<div v-for="(field,k) in errors" :key="k"  class="col ">
-				<p v-for="error in field" :key="error" class="text-sm-center ">
-					{{error}}
-				</p>
-			</div>
-		</div>
         <div class="row">
             <div class="col">
                 <TodosListAdd @on-click-add="store" />
             </div>
         </div>
         <div class="row">
+            <div class="col">Open: </div>
+            <div class="col">Done: </div>
+        </div>
+        <div class="row">
             <div class="col">
                 <TodosListItem
-					:data="todos"
 					@on-todo-click="info"
 					@on-click-delete="deleteTodo"
 					@on-todo-change="update"
@@ -24,7 +20,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <TodosListInfo v-if="todo"  :data="todo" />
+                <TodosListInfo v-if="todo" :data="todo" />
             </div>
         </div>
     </div>
@@ -40,24 +36,13 @@ export default {
     components: {TodosListInfo, TodosListItem, TodosListAdd},
     data() {
         return {
-            todos: [],
-            errors:null,
             todo: null,
         }
     },
-    created() {
-        this.getTodos()
+    beforeCreate() {
+        this.$store.dispatch("todos/getTodos")
     },
     methods: {
-        getTodos() {
-            axios.get("/api/todos")
-                .then(resp => {
-                    this.todos = resp.data
-                })
-                .catch(err => {
-                    console.error(err)
-                });
-        },
         info(obj) {
             this.todo = obj
         },
@@ -68,11 +53,15 @@ export default {
                     this.todos = this.todos.filter( item => item === updatedTodo ? updatedTodo : item)
                 })
                 .catch(err => {
-                    console.error(err)
-                    this.errors = err
+                    if(err.response.status == 422) {
+                        let msg = (undefined !== err.response.data.errors.text)
+                            ? err.response.data.errors.text[0]
+                            : 'Fehlerhafte Eingabe';
+                        alert(msg);
+                    }
                 });
         },
-        store(txt){
+        store(txt) {
            let newTodo = {
              'text':txt,
              'done':0,
@@ -82,9 +71,12 @@ export default {
                     this.todos.unshift(resp.data.data)
                })
                .catch(err => {
-                    console.info(err.response.status)
-				    console.log(err.response.data.errors)
-				    this.errors = err.response.data.errors
+                   if(err.response.status == 422) {
+                       let msg = (undefined !== err.response.data.errors.text)
+                           ? err.response.data.errors.text[0]
+                           : 'Fehlerhafte Eingabe';
+                       alert(msg);
+                   }
                });
         },
         deleteTodo(obj){
@@ -103,7 +95,6 @@ export default {
                     })
                     .catch(err => {
                         console.error(err)
-                        this.errors = err
                     });
             }
         }
@@ -112,11 +103,5 @@ export default {
 </script>
 
 <style scoped>
-.error{
-	width: 70%;
-	margin: 0 auto;
-	border-radius: 12px;
-
-}
 
 </style>
