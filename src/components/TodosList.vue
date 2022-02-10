@@ -14,7 +14,6 @@
                 <TodosListItem
 					@on-todo-click="info"
 					@on-click-delete="deleteTodo"
-					@on-todo-change="update"
 				/>
             </div>
         </div>
@@ -45,21 +44,6 @@ export default {
     methods: {
         info(obj) {
             this.todo = obj
-        },
-        update(obj){
-            axios.put("/api/todos/" + obj.id, obj)
-                .then(resp => {
-                    let updatedTodo = resp.data.data;
-                    this.todos = this.todos.filter( item => item === updatedTodo ? updatedTodo : item)
-                })
-                .catch(err => {
-                    if(err.response.status == 422) {
-                        let msg = (undefined !== err.response.data.errors.text)
-                            ? err.response.data.errors.text[0]
-                            : 'Fehlerhafte Eingabe';
-                        alert(msg);
-                    }
-                });
         },
         store(txt) {
            let newTodo = {

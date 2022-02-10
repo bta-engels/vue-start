@@ -26,6 +26,10 @@ const todos = {
 		mError: function (state, err) {
 			state.error = err
 		},
+		mUpdate: function (state, todo) {
+			state.error = null
+			state.liste = state.liste.filter( item => item === todo ? todo : item)
+		}
 	},
 	actions: {
 		getTodos(context) {
@@ -36,7 +40,23 @@ const todos = {
 				.catch(err => {
 					context.commit('mError', err.response.data.message)
 				});
-		}
+		},
+		update(context,obj){
+			axios.put("/api/todos/" + obj.id, obj)
+				.then(resp => {
+					let updatedTodo = resp.data.data;
+					context.commit("mUpdate",updatedTodo)
+				})
+				.catch(err => {
+					if(err.response.status == 422) {
+						let msg = (undefined !== err.response.data.errors.text)
+							? err.response.data.errors.text[0]
+							: 'Fehlerhafte Eingabe';
+						context.commit("mError",msg)
+					}
+				});
+		},
 	},
+
 };
 export default todos;

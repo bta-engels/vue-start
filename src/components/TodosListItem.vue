@@ -4,12 +4,12 @@
         <li v-for="item in data" :key="item.id">
                 <input type="checkbox"
                        v-model="item.done"
-                       @change="$emit('on-todo-change', item)"
+					   @change="update(item)"
                 />
                 <input type="text"
                        :class="{'done': item.done}"
                        @click="$emit('on-todo-click', item)"
-                       @change="$emit('on-todo-change', item)"
+                       @change="update(item)"
                        v-model="item.text"
                 />
 
@@ -29,7 +29,12 @@ export default {
         data() {
             return this.$store.state.todos.liste
         }
-    }
+    },
+	methods: {
+		update(todo) {
+			this.$store.dispatch('todos/update', todo);
+		}
+	}
 }
 </script>
 
