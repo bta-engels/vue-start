@@ -11,6 +11,9 @@
             </b-form-group>
             <input type="submit" role="button" class="btn btn-primary" value="Login"/>
         </b-form>
+		<div class="alert-danger p-1 m-1 w-100 text-sm-center" v-if="error">
+			Error: {{error}}
+		</div>
     </div>
 </template>
 
@@ -26,6 +29,12 @@ export default {
             },
         }
     },
+	computed: {
+		error() {
+			//console.info(this.$store.state.auth.error)
+			return this.$store.state.auth.error
+		}
+	},
     methods: {
         login() {
             this.$store.dispatch('auth/login', this.user);
@@ -33,6 +42,7 @@ export default {
     }
 }
 </script>
+
 
 <style scoped>
 </style>

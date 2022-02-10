@@ -29,6 +29,8 @@ const auth = {
 	mutations: {
 		mLogin: function (state, loginResponse) {
 			state.user = loginResponse
+			state.error = null
+			state.check = true
 			localStorage.setItem('userName', state.user.name)
 			localStorage.setItem('userToken', state.user.token)
 			axios.defaults.headers.common['Authorization'] = "Bearer " + state.user.token;
@@ -52,6 +54,7 @@ const auth = {
 		login(context, user) {
 			axios.post("/api/login", user)
 				.then(resp => {
+					//context.commit('mError',null)
 					context.commit('mLogin', resp.data)
 				})
 				.catch(err => {
