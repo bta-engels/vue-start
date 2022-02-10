@@ -7,12 +7,14 @@ Vue.use(Vuex)
 const todos = {
 	namespaced: true,
 	state: {
+		todos: [],
 	},
 	getters: {
 	},
 	mutations: {
 	},
 	actions: {
+
 	},
 };
 export default todos;

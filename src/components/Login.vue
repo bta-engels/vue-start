@@ -11,6 +11,7 @@
             </b-form-group>
             <input type="submit" role="button" class="btn btn-primary" value="Login"/>
         </b-form>
+        <div v-if="error" class="alert-danger p-2 m-1 text-center">{{ error }}</div>
     </div>
 </template>
 
@@ -25,6 +26,11 @@ export default {
                 password: null,
             },
         }
+    },
+    computed: {
+        error() {
+            return this.$store.state.auth.error;
+        },
     },
     methods: {
         login() {

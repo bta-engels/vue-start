@@ -3,7 +3,8 @@
         <div id="nav">
             <router-link to="/">Home</router-link>
             | <router-link to="/todos">Todos</router-link>
-            | <router-link to="/login">Login</router-link>
+            | <router-link v-if="check" to="/logout">Logout {{ user.name }}</router-link>
+            <router-link v-else to="/login">Login</router-link>
         </div>
         <div class="container align-content-center">
             <router-view/>
@@ -14,9 +15,26 @@
 <script>
 import { mapGetters } from "vuex";
 
-export default {
+const App = {
     name: "App",
+    computed: {
+        ...mapGetters({
+            "check": "auth/check",
+            "user": "auth/user",
+        })
+/*
+        check() {
+            return this.$store.state.auth.check;
+        },
+        userName() {
+            return this.$store.state.auth.user.name;
+        }
+*/
+    },
 }
+export default App;
+console.info(App.computed)
+
 </script>
 
 <style>
