@@ -17,6 +17,8 @@ const todos = {
 		liste: state => state.liste,
 		todo: state => state.todo,
 		error: state => state.error,
+		countOpen: state => state.liste.filter(item => !item.done).length,
+		countDone: state => state.liste.filter(item => item.done).length,
 	},
 	mutations: {
 		mTodos: function (state, todos) {
@@ -41,7 +43,7 @@ const todos = {
 					context.commit('mError', err.response.data.message)
 				});
 		},
-		update(context,obj){
+		update(context, obj) {
 			axios.put("/api/todos/" + obj.id, obj)
 				.then(resp => {
 					let updatedTodo = resp.data.data;
