@@ -1,5 +1,12 @@
 <template>
     <div>
+		<div class="row alert-danger error" v-if="errors">
+			<div v-for="(field,k) in errors" :key="k"  class="col ">
+				<p v-for="error in field" :key="error" class="text-sm-center ">
+					{{error}}
+				</p>
+			</div>
+		</div>
         <div class="row">
             <div class="col">
                 <TodosListAdd @on-click-add="store" />
@@ -35,7 +42,7 @@ export default {
     data() {
         return {
             todos: [],
-            errrors:null,
+            errors:null,
             todo: null,
         }
     },
@@ -76,9 +83,12 @@ export default {
                     this.todos.unshift(resp.data.data)
                })
                .catch(err => {
-                    console.info(err.response.status)
-				    console.log(err.response.data.errors)
-				    alert(err.response.data.errors.text)
+                    //console.info(err.response.status)
+				    //console.log(err.response.data.errors)
+				    //alert(err.response.data.errors.text)
+				    this.errors = err.response.data.errors
+
+				   //this.errrors = this.errrors.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')
                });
         },
         deleteTodo(obj){
@@ -106,5 +116,11 @@ export default {
 </script>
 
 <style scoped>
+.error{
+	width: 70%;
+	margin: 0 auto;
+	border-radius: 12px;
+
+}
 
 </style>
