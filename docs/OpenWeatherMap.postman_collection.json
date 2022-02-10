@@ -62,7 +62,7 @@
 						},
 						{
 							"key": "appid",
-							"value": "4a1c5235f0e411806cce45d4ff6935d8",
+							"value": "",
 							"description": "**API Key**. *Example: 52a17d91b3ed0697b05a7dd6fdc708c4*. API Keys are associated with developer accounts."
 						},
 						{
@@ -91,7 +91,7 @@
 					"query": [
 						{
 							"key": "appid",
-							"value": "4a1c5235f0e411806cce45d4ff6935d8",
+							"value": "",
 							"description": "**API Key**. *Example: 52a17d91b3ed0697b05a7dd6fdc708c4*. API Keys are associated with developer accounts."
 						},
 						{
