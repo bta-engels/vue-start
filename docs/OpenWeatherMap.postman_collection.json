@@ -8,11 +8,18 @@
 	"item": [
 		{
 			"name": "Call current weather data for one location",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
 				"url": {
-					"raw": "{{baseUrl}}/weather?q=Berlin DE&id=&lat=&lon=&zip=&units=metric&lang=de&Mode=&appid=4a1c5235f0e411806cce45d4ff6935d8&No Name=",
+					"raw": "{{baseUrl}}/weather?q=Berlin&id=&lat=&lon=&zip=&units=metric&lang=de&Mode=&appid=&No Name=",
 					"host": [
 						"{{baseUrl}}"
 					],
@@ -22,7 +29,7 @@
 					"query": [
 						{
 							"key": "q",
-							"value": "Berlin DE",
+							"value": "Berlin",
 							"description": "**City name**. *Example: London*. You can call by city name, or by city name and country code. The API responds with a list of results that match a searching word. For the query value, type the city name and optionally the country code divided by a comma; use ISO 3166 country codes."
 						},
 						{
@@ -81,7 +88,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/forecast?appid=4a1c5235f0e411806cce45d4ff6935d8&q=Berlin&id=&lat=&lon=&zip=&units=metric&lang=&Mode=",
+					"raw": "{{baseUrl}}/forecast?appid=&q=Berlin&id=&lat=&lon=&zip=&units=metric&lang=&Mode=",
 					"host": [
 						"{{baseUrl}}"
 					],
