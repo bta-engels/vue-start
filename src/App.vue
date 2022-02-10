@@ -3,9 +3,8 @@
         <div id="nav">
             <router-link to="/">Home</router-link>
             | <router-link to="/todos">Todos</router-link>
-            | <router-link v-if="check" to="/logout">Logout {{user.name}}</router-link>
-			  <router-link v-else to="/login">Login</router-link>
-
+            | <router-link v-if="check" to="/logout">Logout {{ user.name }}</router-link>
+            <router-link v-else to="/login">Login</router-link>
         </div>
         <div class="container align-content-center">
             <router-view/>
@@ -14,19 +13,25 @@
 </template>
 
 <script>
-//import { mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
     name: "App",
-
-	computed: {
-		user() {
-			return this.$store.state.auth.user
-		},
-		check() {
-			return this.$store.state.auth.check
-		}
-	}
+    computed: {
+        // spread-opperator "...": packt ein iterierbares objekt in seine bestandteile aus
+        ...mapGetters({
+            "check": "auth/check",
+            "user": "auth/user",
+        })
+/*
+        check() {
+            return this.$store.state.auth.check;
+        },
+        user() {
+            return this.$store.state.auth.user;
+        }
+*/
+    },
 }
 </script>
 
