@@ -6,9 +6,12 @@
             </div>
         </div>
         <div class="row">
+            <div class="col">Open: </div>
+            <div class="col">Done: </div>
+        </div>
+        <div class="row">
             <div class="col">
                 <TodosListItem
-					:data="todos"
 					@on-todo-click="info"
 					@on-click-delete="deleteTodo"
 					@on-todo-change="update"
@@ -33,23 +36,13 @@ export default {
     components: {TodosListInfo, TodosListItem, TodosListAdd},
     data() {
         return {
-            todos: [],
             todo: null,
         }
     },
-    created() {
-        this.getTodos()
+    beforeCreate() {
+        this.$store.dispatch("todos/getTodos")
     },
     methods: {
-        getTodos() {
-            axios.get("/api/todos")
-                .then(resp => {
-                    this.todos = resp.data
-                })
-                .catch(err => {
-                    console.error(err)
-                });
-        },
         info(obj) {
             this.todo = obj
         },
