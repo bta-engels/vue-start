@@ -15,9 +15,10 @@
 <script>
 import { mapGetters } from "vuex";
 
-const App = {
+export default {
     name: "App",
     computed: {
+        // spread-opperator "...": packt ein iterierbares objekt in seine bestandteile aus
         ...mapGetters({
             "check": "auth/check",
             "user": "auth/user",
@@ -26,15 +27,12 @@ const App = {
         check() {
             return this.$store.state.auth.check;
         },
-        userName() {
-            return this.$store.state.auth.user.name;
+        user() {
+            return this.$store.state.auth.user;
         }
 */
     },
 }
-export default App;
-console.info(App.computed)
-
 </script>
 
 <style>
