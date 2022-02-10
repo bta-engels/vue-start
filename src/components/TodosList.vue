@@ -1,5 +1,12 @@
 <template>
     <div>
+		<div class="row alert-danger error" v-if="errors">
+			<div v-for="(field,k) in errors" :key="k"  class="col ">
+				<p v-for="error in field" :key="error" class="text-sm-center ">
+					{{error}}
+				</p>
+			</div>
+		</div>
         <div class="row">
             <div class="col">
                 <TodosListAdd @on-click-add="store" />
@@ -17,7 +24,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <TodosListInfo v-if="todo" :data="todo" />
+                <TodosListInfo v-if="todo"  :data="todo" />
             </div>
         </div>
     </div>
@@ -35,6 +42,7 @@ export default {
     data() {
         return {
             todos: [],
+            errors:null,
             todo: null,
         }
     },
@@ -61,15 +69,11 @@ export default {
                     this.todos = this.todos.filter( item => item === updatedTodo ? updatedTodo : item)
                 })
                 .catch(err => {
-                    if(err.response.status == 422) {
-                        let msg = (undefined !== err.response.data.errors.text)
-                            ? err.response.data.errors.text[0]
-                            : 'Fehlerhafte Eingabe';
-                        alert(msg);
-                    }
+                    console.error(err)
+                    this.errors = err
                 });
         },
-        store(txt) {
+        store(txt){
            let newTodo = {
              'text':txt,
              'done':0,
@@ -79,12 +83,9 @@ export default {
                     this.todos.unshift(resp.data.data)
                })
                .catch(err => {
-                   if(err.response.status == 422) {
-                       let msg = (undefined !== err.response.data.errors.text)
-                           ? err.response.data.errors.text[0]
-                           : 'Fehlerhafte Eingabe';
-                       alert(msg);
-                   }
+                    console.info(err.response.status)
+				    console.log(err.response.data.errors)
+				    this.errors = err.response.data.errors
                });
         },
         deleteTodo(obj){
@@ -103,6 +104,7 @@ export default {
                     })
                     .catch(err => {
                         console.error(err)
+                        this.errors = err
                     });
             }
         }
@@ -111,5 +113,11 @@ export default {
 </script>
 
 <style scoped>
+.error{
+	width: 70%;
+	margin: 0 auto;
+	border-radius: 12px;
+
+}
 
 </style>
