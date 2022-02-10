@@ -32,7 +32,6 @@
 
 <script>
 /* eslint-disable */
-/* global axios */
 import TodosListAdd from "@/components/TodosListAdd";
 import TodosListItem from "@/components/TodosListItem";
 import TodosListInfo from "@/components/TodosListInfo";

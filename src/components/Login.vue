@@ -28,17 +28,7 @@ export default {
     },
     methods: {
         login() {
-            axios.post("/api/login", this.user)
-                .then(resp => {
-                    let userName = resp.data.name,
-                        userToken = resp.data.token;
-                    localStorage.setItem('userName', userName)
-                    localStorage.setItem('userToken', userToken)
-                })
-                .catch(err => {
-                    alert(err.response.data.errors.email)
-                })
-            ;
+            this.$store.dispatch('auth/login', this.user);
         }
     }
 }

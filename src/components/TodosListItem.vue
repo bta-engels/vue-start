@@ -27,7 +27,6 @@ export default {
     name: "TodosListItem",
     props: ['data']
 }
-
 </script>
 
 <style scoped>

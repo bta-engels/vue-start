@@ -8,16 +8,10 @@ import axios from "axios";
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-let userToken = localStorage.getItem('userToken');
-if(userToken) {
-	console.info("userToken: " + userToken);
-	axios.defaults.headers.common['Authorization'] = "Bearer " + userToken;
-}
-
 let config = {
 	baseURL: process.env.VUE_APP_APIURL || "",
 	// timeout: 60 * 1000, // Timeout
-	// withCredentials: true, // Check cross-site Access-Control
+	withCredentials: true, // Check cross-site Access-Control
 };
 const _axios = axios.create(config);
 
