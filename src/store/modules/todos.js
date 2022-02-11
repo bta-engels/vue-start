@@ -32,20 +32,8 @@ const todos = {
 		translatedListe: [],
 		countDone: 0,
 		countOpen: 0,
-		todo: {
-			id: null,
-			text: null,
-			done: false,
-			created_at: null,
-			updated_at: null,
-		},
-		translatedTodo: {
-			id: null,
-			text: null,
-			done: false,
-			created_at: null,
-			updated_at: null,
-		},
+		todo: null,
+		translatedTodo: null,
 		error: null,
 	},
 	getters: {
