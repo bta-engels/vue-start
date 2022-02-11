@@ -64,15 +64,15 @@ export default {
 #nav a.router-link-exact-active {
     color: #42b983;
 }
-#nav a.currentLang {
-    color: #c00;
+#nav a.currentLang .lang {
+    border: 2px solid #00c;
 }
 .lang {
     display: inline-block;
     width: 30px;
     height: 20px;
     background-repeat: no-repeat;
-    background-size: 30px 20px;
+    background-size: cover;
 }
 .de {
     background-image: url(assets/flags/de.png);
