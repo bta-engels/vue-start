@@ -6,9 +6,11 @@
             | <router-link to="/wetter">Wetter</router-link>
             | <router-link v-if="check" to="/logout">Logout {{ user.name }}</router-link>
             <router-link v-else to="/login">Login</router-link>
-            | <router-link to="/lang/de" :class="{'currentLang': lang==='de'}">DE</router-link>
-            | <router-link to="/lang/en" :class="{'currentLang': lang==='en'}">EN</router-link>
-            | <router-link to="/lang/fr" :class="{'currentLang': lang==='fr'}">FR</router-link>
+              <div class="float-right flags">
+                  <router-link to="/lang/de" :class="{'currentLang': lang==='de'}"><i class="lang de"/></router-link>
+                  <router-link to="/lang/en" :class="{'currentLang': lang==='en'}"><i class="lang en"/></router-link>
+                  <router-link to="/lang/fr" :class="{'currentLang': lang==='fr'}"><i class="lang fr"/></router-link>
+              </div>
         </div>
         <div class="container align-content-center">
             <router-view/>
@@ -52,6 +54,7 @@ export default {
     text-align: center;
 }
 #nav {
+    width: 100%;
     padding: 30px;
 }
 #nav a {
@@ -63,5 +66,24 @@ export default {
 }
 #nav a.currentLang {
     color: #c00;
+}
+.lang {
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: 30px 20px;
+}
+.de {
+    background-image: url(assets/flags/de.png);
+}
+.en {
+    background-image: url(assets/flags/gb.png);
+}
+.fr {
+    background-image: url(assets/flags/fr.png);
+}
+.flags a {
+    margin-left: 5px;
 }
 </style>

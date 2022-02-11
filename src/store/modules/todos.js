@@ -88,8 +88,8 @@ const todos = {
 		mUpdate: function (state, todo) {
 			state.error = null
 			state.liste = state.liste.map(item => item.id === todo.id ? todo : item)
-			console.info("todo", todo)
-			console.info("mUpdate", state.liste.find(item => item.id === todo.id))
+//			console.info("todo", todo)
+//			console.info("mUpdate", state.liste.find(item => item.id === todo.id))
 		},
 		mStore: function (state, todo) {
 			state.error = null

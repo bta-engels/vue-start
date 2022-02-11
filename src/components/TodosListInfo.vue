@@ -48,4 +48,10 @@ export default {
 th, td {
     text-align: left;
 }
+th {
+    width: 20%;
+}
+td {
+    width: 80%;
+}
 </style>
