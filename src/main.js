@@ -10,6 +10,8 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+store.dispatch("locale/setLang", process.env.VUE_APP_LOCALE)
+
 new Vue({
 	router,
 	store,

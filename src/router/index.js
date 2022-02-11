@@ -5,6 +5,8 @@ import Default from "../components/Default";
 import TodosPage from "../views/TodosPage";
 import LoginPage from "../views/LoginPage";
 import store from "@/store";
+import WeatherPage from "@/views/WeatherPage";
+import SwitchLang from "@/components/SwitchLang";
 
 Vue.use(VueRouter)
 
@@ -20,6 +22,11 @@ const routes = [
 		component: TodosPage
 	},
 	{
+		path: '/wetter',
+		name: 'Wetter',
+		component: WeatherPage
+	},
+	{
 		path: '/login',
 		name: 'Login',
 		component: LoginPage
@@ -30,6 +37,11 @@ const routes = [
 		component: function () {
 			store.dispatch("auth/logout")
 		}
+	},
+	{
+		path: '/lang/:langCode',
+		name: 'Lang',
+		component: SwitchLang
 	},
 	{
 		path: '/*',

@@ -17,6 +17,8 @@
 
 <script>
 /* eslint-disable */
+import store from "@/store";
+
 export default {
     name: "Login",
     data() {
@@ -32,9 +34,17 @@ export default {
             return this.$store.state.auth.error;
         },
     },
+/*
+    beforeRouteEnter(to, from, next) {
+        if(from.name !== "Login") {
+            this.$router.push({name: from.name})
+        }
+    },
+*/
     methods: {
         login() {
             this.$store.dispatch('auth/login', this.user);
+            this.$router.back()
         }
     }
 }

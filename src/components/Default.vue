@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h3>{{ msg }}</h3>
+    <div :class="css">
+        <p>{{ msg }}</p>
     </div>
 </template>
 
@@ -11,7 +11,8 @@ export default {
         msg: {
             type: String,
             default: 'Das ist die falsche Route'
-        }
+        },
+        css: String,
     }
 }
 </script>

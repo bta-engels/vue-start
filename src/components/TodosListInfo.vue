@@ -1,17 +1,17 @@
 <template>
-    <div>
-        <table v-if="data" class="table table-striped">
+    <div v-if="todo && todo.id">
+        <table class="table table-striped">
             <tr>
                 <th>ID</th>
-                <td>{{ data.id }}</td>
+                <td>{{ todo.id }}</td>
             </tr>
             <tr>
                 <th>Erledigt</th>
-                <td>{{ data.done ? 'JA' : 'Nein' }}</td>
+                <td>{{ todo.done ? 'JA' : 'Nein' }}</td>
             </tr>
             <tr>
                 <th>Text</th>
-                <td>{{ data.text }}</td>
+                <td>{{ todo.text }}</td>
             </tr>
             <tr>
                 <th>erstellt</th>
@@ -22,12 +22,15 @@
 </template>
 
 <script>
+
 export default {
     name: "TodosListInfo",
-    props: ['data'],
     computed: {
+        todo() {
+            return this.$store.state.todos.translatedTodo
+        },
         createdAt() {
-            let date = new Date(this.data.created_at),
+            let date = new Date(this.todo.created_at),
                 day = date.toLocaleDateString(),
                 hours = date.getHours(),
                 minutes = date.getMinutes();
@@ -42,7 +45,7 @@ export default {
 </script>
 
 <style scoped>
-th,td {
+th, td {
     text-align: left;
 }
 </style>

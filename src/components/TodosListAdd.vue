@@ -1,8 +1,10 @@
 <template>
 	<div>
 		<input v-model="txt" type="text"/>
-		<input type="button" value="Add" @click="$emit('on-click-add', txt)">
-	</div>
+        <b-button  @click="store" class="btn-sm btn-primary">
+            <font-awesome-icon icon="plus"/>
+        </b-button>
+    </div>
 </template>
 
 <script>
@@ -13,6 +15,15 @@ export default {
 			txt:null,
 		}
 	},
+    methods: {
+        store() {
+            let newTodo = {
+                done: false,
+                text: this.txt,
+            }
+            this.$store.dispatch("todos/store", newTodo)
+        }
+    }
 }
 </script>
 

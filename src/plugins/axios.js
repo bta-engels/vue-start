@@ -2,6 +2,7 @@
 "use strict";
 import Vue from 'vue';
 import axios from "axios";
+import Router from "@/router";
 
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
@@ -11,7 +12,7 @@ import axios from "axios";
 let config = {
 	baseURL: process.env.VUE_APP_APIURL || "",
 	// timeout: 60 * 1000, // Timeout
-	withCredentials: true, // Check cross-site Access-Control
+	// withCredentials: true, // Check cross-site Access-Control
 };
 const _axios = axios.create(config);
 
@@ -34,6 +35,9 @@ _axios.interceptors.response.use(
 	},
 	function (error) {
 		// Do something with response error
+		if(401 === error.response.status) {
+			Router.push('/login')
+		}
 		return Promise.reject(error);
 	}
 );
