@@ -17,6 +17,10 @@ const locale = {
 			state.lang = lang;
 			axios.defaults.headers.common['X-Lang'] = lang;
 		},
+		mRemoveLang: function (state) {
+			state.lang = null;
+			delete axios.defaults.headers.common['X-Lang'];
+		},
 	},
 	actions: {
 		setLang({commit}, language) {

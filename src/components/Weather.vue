@@ -2,10 +2,10 @@
     <div>
         <div class="row">
             <div class="col">
-                <b-form @submit.prevent="getWheater">
-                    <input type="text" v-model="city" placeholder="Stadt eingeben" />
-                    <input type="submit" value="Search" />
-                </b-form>
+                <input type="text" v-model="city" placeholder="Stadt eingeben" />
+                <b-button  @click="getWheater" class="btn-sm btn-primary">
+                    <font-awesome-icon icon="cloud-sun"/>
+                </b-button>
             </div>
         </div>
         <div class="row mt-5" v-if="data">
@@ -28,16 +28,25 @@ export default {
         return {
             city: null,
             data: null,
+            lang: null,
         }
+    },
+    beforeCreate() {
+        this.lang = this.$store.state.locale.lang
+        this.$store.commit('locale/mRemoveLang')
+    },
+    beforeDestroy() {
+        this.$store.commit('locale/mSetLang', this.lang)
     },
     methods: {
         getWheater() {
             let apiUrl = "http://api.openweathermap.org/data/2.5/weather?q="+this.city+"&lang=de&units=metric&APPID="+process.env.VUE_APP_WHEATER_APPID;
             axios.get(apiUrl)
                 .then(resp => {
-                    let w = resp.data.weather[0],
-                        m = resp.data.main,
-                        s = resp.data.sys;
+                    let data = resp.data,
+                        w = data.weather[0],
+                        m = data.main,
+                        s = data.sys;
 
                     this.data = {
                         text: w.description,
@@ -48,7 +57,7 @@ export default {
                     }
                 })
                 .catch(err => {
-                    console.info(err.response.data.message)
+                    console.info(err)
                 });
         }
     }

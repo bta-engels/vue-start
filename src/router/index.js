@@ -7,6 +7,7 @@ import LoginPage from "../views/LoginPage";
 import store from "@/store";
 import WeatherPage from "@/views/WeatherPage";
 import SwitchLang from "@/components/SwitchLang";
+import Gallery from "@/components/Gallery";
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,11 @@ const routes = [
 		path: '/wetter',
 		name: 'Wetter',
 		component: WeatherPage
+	},
+	{
+		path: '/gallery',
+		name: 'Gallery',
+		component: Gallery
 	},
 	{
 		path: '/login',

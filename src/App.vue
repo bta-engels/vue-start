@@ -4,6 +4,7 @@
             <router-link to="/">Home</router-link>
             | <router-link to="/todos">Todos</router-link>
             | <router-link to="/wetter">Wetter</router-link>
+            | <router-link to="/gallery">Galerie</router-link>
             | <router-link v-if="check" to="/logout">Logout {{ user.name }}</router-link>
             <router-link v-else to="/login">Login</router-link>
               <div class="float-right flags">

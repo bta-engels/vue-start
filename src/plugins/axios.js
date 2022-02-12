@@ -11,7 +11,7 @@ import Router from "@/router";
 
 let config = {
 	baseURL: process.env.VUE_APP_APIURL || "",
-	// timeout: 60 * 1000, // Timeout
+	timeout: 60 * 1000, // Timeout
 	// withCredentials: true, // Check cross-site Access-Control
 };
 const _axios = axios.create(config);
