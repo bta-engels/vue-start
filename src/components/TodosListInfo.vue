@@ -23,6 +23,8 @@
 
 <script>
 
+import store from "@/store";
+
 export default {
     name: "TodosListInfo",
     computed: {

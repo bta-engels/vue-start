@@ -34,14 +34,13 @@ import TodosListInfo from "@/components/TodosListInfo";
 import DoneState from "@/components/DoneState";
 import { mapGetters } from "vuex";
 import Error from "@/components/Error";
-import store from "@/store";
 
 export default {
     name: "TodosList",
     components: {Error, DoneState, TodosListInfo, TodosListItem, TodosListAdd},
     beforeMount() {
         if(!this.$store.state.locale.lang) {
-            store.dispatch('locale/setLang', process.env.VUE_APP_LOCALE);
+            this.$store.dispatch('locale/setLang', process.env.VUE_APP_LOCALE);
             this.$store.commit("todos/mTranslateListe")
         }
         if (this.$store.state.todos.liste.length === 0) {
