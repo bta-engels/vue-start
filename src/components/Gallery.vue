@@ -68,9 +68,11 @@ export default {
                 lazyLoadAfter: 5,
             },
             vfImages: [
-                'cowboy','ziel','fahrrad','haus_in_strasse','hooge_parking','nebel_morgen','nebel_steg',
-                'venus','vw','hütte','watt','möwen','müritzsee','femö','pamina_helgoland','robben',
-                'see','winter','sommer'
+                'cowboy','ziel','vw','fahrrad','haus_in_strasse',
+                'hooge_parking','nebel_morgen','nebel_steg',
+                'schweden1','schweden2','schweden3',
+                'venus','hütte','watt','möwen','müritzsee',
+                'femö','pamina_helgoland','robben','see',
             ],
             vfTransitions: [
                 'fade', 'kenburn',
