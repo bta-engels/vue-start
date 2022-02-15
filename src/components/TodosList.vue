@@ -40,7 +40,6 @@ export default {
     components: {Error, DoneState, TodosListInfo, TodosListItem, TodosListAdd},
     beforeMount() {
         if(!this.$store.state.locale.lang) {
-            this.$store.dispatch('locale/setLang', process.env.VUE_APP_LOCALE);
             this.$store.commit("todos/mTranslateListe")
         }
         if (this.$store.state.todos.liste.length === 0) {
