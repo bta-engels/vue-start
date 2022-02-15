@@ -18,9 +18,13 @@ const handleErrors = err => {
 		return null
 	},
 	__ = data => {
-		let lang = store.state.locale.lang;
+		let lang = store.state.locale.lang,
+		fallback = process.env.VUE_APP_LOCALE;
+
 		if(undefined !== data.text[lang]) {
 			data.text = data.text[lang]
+		} else if(undefined !== data.text[fallback]) {
+			data.text = data.text[fallback]
 		}
 		return data;
 	};
@@ -85,7 +89,7 @@ const todos = {
 		},
 		mDelete: function (state, todo) {
 			state.error = null
-			state.liste = state.liste.filter( item => todo !== item)
+			state.liste = state.liste.filter( item => todo.id !== item.id)
 		},
 	},
 	actions: {
