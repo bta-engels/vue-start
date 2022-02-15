@@ -63,10 +63,10 @@ const todos = {
 		},
 		mTranslateListe: function (state) {
 			let liste = JSON.parse(JSON.stringify(state.liste));
-//			console.info("mTranslateListe Liste", state.liste)
+			console.info("mTranslateListe Liste", state.liste)
 			if(liste.length > 0) {
 				state.translatedListe = liste.map(__)
-//				console.info("mTranslateListe", state.translatedListe)
+				console.info("mTranslateListe", state.translatedListe)
 			}
 		},
  		mListe: function (state, todos) {
