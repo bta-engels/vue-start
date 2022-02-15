@@ -76,13 +76,13 @@ export default {
     background-size: cover;
 }
 .de {
-    background-image: url(assets/flags/de.png);
+    background-image: url(assets/flaggen/de.png);
 }
 .en {
-    background-image: url(assets/flags/gb.png);
+    background-image: url(assets/flaggen/gb.png);
 }
 .fr {
-    background-image: url(assets/flags/fr.png);
+    background-image: url(assets/flaggen/fr.png);
 }
 .flags a {
     margin-left: 5px;
