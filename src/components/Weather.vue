@@ -40,7 +40,7 @@ export default {
     },
     methods: {
         getWheater() {
-            let apiUrl = "http://api.openweathermap.org/data/2.5/weather?q="+this.city+"&lang=de&units=metric&APPID="+process.env.VUE_APP_WHEATER_APPID;
+            let apiUrl = "http://api.openweathermap.org/data/2.5/weather?q="+this.city+"&lang=de&units=metric&APPID="+process.env.VUE_APP_WEATHER_APPID;
             axios.get(apiUrl)
                 .then(resp => {
                     let data = resp.data,
