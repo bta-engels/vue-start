@@ -1,5 +1,5 @@
 # vue-start
-
+with vuex, translations
 ## Project setup
 ```
 npm install
